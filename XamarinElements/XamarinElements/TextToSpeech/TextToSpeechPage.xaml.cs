@@ -12,15 +12,34 @@ namespace XamarinElements.TextToSpeech
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TextToSpeechPage : ContentPage
     {
+        float Volume_;
+        float Pitch_;
         public TextToSpeechPage()
         {
             InitializeComponent();
-            SpeakNowDefaultSettings();
+            Volume_ = (float)vol.Value;
+            Pitch_ = (float)pit.Value;
+
         }
 
-        public async Task SpeakNowDefaultSettings()
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            await TextToSpeech.SpeakAsync("Hello World");
+            SpeechOptions settings = new SpeechOptions()
+            {
+                Volume = Volume_,
+                Pitch = Pitch_,
+            };
+            if (text.Text != null) { await Xamarin.Essentials.TextToSpeech.SpeakAsync(text.Text, settings); }
+        }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            Volume_ = (float)vol.Value;
+        }
+
+        private void Slider_ValueChanged_1(object sender, ValueChangedEventArgs e)
+        {
+            Pitch_ = (float)pit.Value;
         }
     }
 }

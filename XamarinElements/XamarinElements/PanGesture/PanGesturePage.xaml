@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <local1:PanGestureContainer>
-                <Image Source="index.png" WidthRequest="512" HeightRequest="384" />
+                <Image Source="index.png" WidthRequest="256" HeightRequest="192"/>
             </local1:PanGestureContainer>
         </AbsoluteLayout>
     </ContentPage.Content>
