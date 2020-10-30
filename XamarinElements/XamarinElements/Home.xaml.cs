@@ -10,6 +10,7 @@ using XamarinElements.TextToSpeech;
 using XamarinElements.PanGesture;
 using XamarinElements.Vibration;
 using XamarinElements.Shake;
+using XamarinElements.Information;
 
 namespace XamarinElements
 {
@@ -18,7 +19,7 @@ namespace XamarinElements
     {
         string[] BTN_names = new string[8]
         { 
-            "PanGesture", "TextToSpeech", "VibrationPage", "Shake", "5", "6", "7", "8"
+            "PanGesture", "TextToSpeech", "Vibration", "Shake", "Information", "6", "7", "8"
         };
         public Home()
         {
@@ -49,11 +50,14 @@ namespace XamarinElements
                 case "TextToSpeech":
                     await Navigation.PushAsync(new TextToSpeechPage());
                     break;
-                case "VibrationPage":
+                case "Vibration":
                     await Navigation.PushAsync(new VibrationPage());
                     break;
                 case "Shake":
                     await Navigation.PushAsync(new ShakePage());
+                    break;
+                case "Information":
+                    await Navigation.PushAsync(new InformationPage());
                     break;
             }
         }

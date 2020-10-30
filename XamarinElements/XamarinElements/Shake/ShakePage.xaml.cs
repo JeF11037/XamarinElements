@@ -16,34 +16,21 @@ namespace XamarinElements.Shake
         public ShakePage()
         {
             InitializeComponent();
-            Xamarin.Essentials.Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            Accelerometer.Start(SensorSpeed.Default);
         }
 
-        private void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        private async void Accelerometer_ShakeDetected(object sender, EventArgs e)
         {
-            lbl.Text = "You`re SHAKING !!!";
+            lbl.Text = "You´re SHAKING !!!";
             lbl.TextColor = Color.WhiteSmoke;
             lbl.BackgroundColor = Color.LawnGreen;
             lbl.FontSize = 30;
-        }
-
-        public void ToggleAccelerometer()
-        {
-            try
-            {
-                if (Accelerometer.IsMonitoring)
-                    Accelerometer.Stop();
-                else
-                    Accelerometer.Start(speed);
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Feature not supported on device
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
-            }
+            await Task.Delay(1000);
+            lbl.Text = "You´re not shaking";
+            lbl.TextColor = Color.Black;
+            lbl.BackgroundColor = Color.PaleVioletRed;
+            lbl.FontSize = 22;
         }
     }
 }
