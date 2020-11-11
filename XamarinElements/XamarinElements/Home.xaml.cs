@@ -11,6 +11,9 @@ using XamarinElements.PanGesture;
 using XamarinElements.Vibration;
 using XamarinElements.Shake;
 using XamarinElements.Information;
+using XamarinElements.Flashlight;
+using XamarinElements.Geolocation;
+using XamarinElements.Map;
 
 namespace XamarinElements
 {
@@ -19,7 +22,7 @@ namespace XamarinElements
     {
         string[] BTN_names = new string[8]
         { 
-            "PanGesture", "TextToSpeech", "Vibration", "Shake", "Information", "6", "7", "8"
+            "PanGesture", "TextToSpeech", "Vibration", "Shake", "Information", "Flashlight", "Geolocation", "Map"
         };
         public Home()
         {
@@ -58,6 +61,15 @@ namespace XamarinElements
                     break;
                 case "Information":
                     await Navigation.PushAsync(new InformationPage());
+                    break;
+                case "Flashlight":
+                    await Navigation.PushAsync(new FlashlightPage());
+                    break;
+                case "Geolocation":
+                    await Navigation.PushAsync(new GeolocationPage());
+                    break;
+                case "Map":
+                    await Navigation.PushAsync(new MapPage());
                     break;
             }
         }
